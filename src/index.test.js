@@ -1,6 +1,6 @@
-import fizzbuzz from '.'
+import { fizzbuzz, phone } from '.'
 
-describe('complete results', () => {
+describe('fizzbuzz', () => {
   it('should return complete list as expected', () => {
     const result = fizzbuzz()
     const expected = [
@@ -107,4 +107,16 @@ describe('complete results', () => {
     ]
     expect(result).toEqual(expected)
   })
+})
+
+
+describe('phone', () => {
+  it.each`
+  input | expected
+  ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]}| ${'(123) 456-7890'}
+  ${[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}| ${'(111) 111-1111'}
+  `('returns $expected for $input', ({ input, expected }) => {
+  const result = phone(input)
+  expect(result).toEqual(expected)
+})
 })
